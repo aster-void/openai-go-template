@@ -19,6 +19,7 @@ func main() {
 	if env.DEV_MODE {
 		router.Test(e.Group("/test"))
 	}
+
 	router.Chat(e.Group("/chat"))
 
 	// 使用するホスティングサービス (Render など) によってはリクエストを受け付けるポートが指定されている場合がある。

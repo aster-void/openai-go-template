@@ -11,7 +11,9 @@ import (
 func Chat(g *echo.Group) {
 	g.POST("/", func(c echo.Context) error {
 		// リクエストボディを JSON として解釈して request.body に格納する
-		// (クライアントから送られてきたデータは無条件で信用しない)
+		// (クライアントから送られてきたデータは無条件で信用しないが、
+		// Go 言語には「型」があるのでデータの型は
+		// クライアントではなく json パッケージの責任になる)
 		var request struct {
 			PromptText string `json:"promptText"`
 		}
