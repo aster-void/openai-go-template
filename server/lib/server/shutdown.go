@@ -6,18 +6,19 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
 	"time"
 
 	"github.com/labstack/echo/v4"
 )
 
-// don't forget to prepend port with ":", as in :3000
-func StartWithProperShutdown(server *echo.Echo, port string) error {
+func StartWithProperShutdown(server *echo.Echo, port uint16) error {
+	var ports = ":" + strconv.Itoa(int(port))
 	var errch chan error
 
 	go func() {
-		err := server.Start(port)
+		err := server.Start(ports)
 		if !errors.Is(err, http.ErrServerClosed) {
 			errch <- err
 		}
