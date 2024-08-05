@@ -87,7 +87,7 @@ func InvokeAI(s string, ctx context.Context) (string, error) {
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "Hello!",
+					Content: s,
 				},
 			},
 		},
